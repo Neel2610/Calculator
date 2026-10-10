@@ -1,0 +1,220 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --background: #0f172a;
+    --calculator: #1e293b;
+    --display: #111827;
+    --button: #334155;
+    --button-hover: #475569;
+    --text: #f8fafc;
+    --muted: #94a3b8;
+    --accent: #38bdf8;
+    --accent-hover: #0ea5e9;
+    --operator: #164e63;
+    --operator-hover: #155e75;
+    --utility: #475569;
+    --border: rgba(255, 255, 255, 0.08);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background:
+        radial-gradient(ellipse at top, #1e3a5f 0%, transparent 55%),
+        var(--background);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+}
+
+.calculator {
+    width: 100%;
+    max-width: 380px;
+    padding: 24px;
+    border: 1px solid var(--border);
+    border-radius: 28px;
+    background: var(--calculator);
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.4);
+}
+
+.calculator-header {
+    margin-bottom: 24px;
+}
+
+.calculator-header h1 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: -0.8px;
+}
+
+.calculator-header p {
+    margin-top: 6px;
+    color: var(--muted);
+    font-size: 0.8rem;
+}
+
+.display-container {
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    gap: 10px;
+    overflow: hidden;
+    padding: 18px;
+    margin-bottom: 20px;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    background: var(--display);
+}
+
+.previous-display {
+    width: 100%;
+    min-height: 18px;
+    overflow: hidden;
+    color: var(--muted);
+    font-size: 0.85rem;
+    text-align: right;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.display {
+    width: 100%;
+    overflow: hidden;
+    font-size: clamp(2rem, 9vw, 2.8rem);
+    font-weight: 600;
+    letter-spacing: -1.5px;
+    text-align: right;
+    text-overflow: clip;
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+}
+
+.keypad {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 10px;
+}
+
+button {
+    min-width: 0;
+    height: 62px;
+    border: 1px solid transparent;
+    border-radius: 15px;
+    background: var(--button);
+    color: var(--text);
+    font: inherit;
+    font-size: 1.15rem;
+    font-weight: 600;
+    cursor: pointer;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    transition:
+        background 0.15s ease,
+        transform 0.1s ease,
+        border-color 0.15s ease;
+}
+
+button:hover {
+    background: var(--button-hover);
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+}
+
+button.utility {
+    background: var(--utility);
+}
+
+button.utility:hover {
+    background: #64748b;
+}
+
+button.operator {
+    background: var(--operator);
+    color: #a5f3fc;
+}
+
+button.operator:hover,
+button.operator.active {
+    background: var(--operator-hover);
+    border-color: var(--accent);
+}
+
+button.equals {
+    grid-row: span 2;
+    height: auto;
+    background: var(--accent);
+    color: #082f49;
+    font-size: 1.6rem;
+}
+
+button.equals:hover {
+    background: var(--accent-hover);
+    color: white;
+}
+
+button.zero {
+    grid-column: span 2;
+}
+
+.message {
+    min-height: 20px;
+    margin-top: 14px;
+    color: #fca5a5;
+    font-size: 0.78rem;
+    text-align: center;
+}
+
+.calculator-footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding-top: 14px;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 0.7rem;
+}
+
+@media (max-width: 420px) {
+    body {
+        padding: 12px;
+    }
+
+    .calculator {
+        padding: 18px;
+        border-radius: 22px;
+    }
+
+    .keypad {
+        gap: 8px;
+    }
+
+    button {
+        height: 56px;
+        border-radius: 12px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        transition: none !important;
+    }
+}
